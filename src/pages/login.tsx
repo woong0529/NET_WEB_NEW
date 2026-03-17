@@ -1,0 +1,210 @@
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '../components/ui/dialog';
+import { auth } from '../firebase'; // 위에서 만든 파일
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
+
+export default function LoginPage() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showSignupDialog, setShowSignupDialog] = useState(false);
+  const [message, setMessage] = useState('');
+  
+  // 회원가입 폼 상태
+  const [signupEmail, setSignupEmail] = useState('');
+  const [signupPassword, setSignupPassword] = useState('');
+  const [signupPasswordConfirm, setSignupPasswordConfirm] = useState('');
+
+// 2. 로그인 상태 감시 (기존 onAuthStateChanged)
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log("로그인 상태:", user.email);
+                // 리액트에서는 alert 대신 보통 조용히 메인으로 보내거나 토스트를 띄웁니다.
+                // navigate('/main'); 
+            }
+        });
+        return () => unsubscribe(); // 컴포넌트 종료 시 감시 중단
+    }, []);
+
+// 3. 로그인 함수 (기존 클릭 이벤트 리스너)
+    const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault(); // 폼 제출 시 페이지 새로고침 방지
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            alert("환영합니다, " + userCredential.user.email + "님!");
+            navigate('/main'); // window.location.href 대신 사용
+        } catch (error: any) {
+            setMessage("에러: " + error.message);
+        }
+    };
+
+  const handleSignup = async (e: React.FormEvent) => {
+    e.preventDefault();
+    // 회원가입 로직
+    if (signupPassword !== signupPasswordConfirm) {
+      return alert("비밀번호가 일치하지 않습니다.");
+    }
+    if (signupPassword.length < 6) {
+      return alert("비밀번호는 최소 6자 이상이어야 합니다.");
+    }
+    try {
+      await createUserWithEmailAndPassword(
+      auth,
+      signupEmail,
+      signupPassword
+      );
+      alert(`회원가입을 축하합니다!`);
+      setShowSignupDialog(false); // 다이얼로그 닫기
+      setSignupEmail("");
+      setSignupPassword("");
+      setSignupPasswordConfirm("");
+    }
+    catch (error: any) {
+      console.error(error);
+      if (error.code === "auth/email-already-in-use") {
+        alert("이미 사용 중인 이메일입니다.");
+      } else {
+        alert("회원가입 실패: " + error.message);
+      }
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+      <div className="w-full max-w-md">
+        <div className="bg-white rounded-2xl shadow-xl p-8 space-y-6">
+          {/* 헤더 */}
+          <div className="text-center space-y-2">
+            <h1 className="text-3xl font-bold text-gray-900">동아리 로그인</h1>
+            <p className="text-gray-500">계정에 로그인하세요</p>
+          </div>
+
+          {/* 로그인 폼 */}
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="email">이메일</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="example@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="password">비밀번호</Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+
+            <Button type="submit" className="w-full">
+              로그인
+            </Button>
+            <div>{/* 에러 메시지 표시 */}
+              {message && <p id="message" className="text-red-500">{message}</p>}
+            </div>
+          </form>
+
+          {/* 구분선 */}
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-white px-2 text-gray-500"></span>
+            </div>
+          </div>
+
+          {/* 회원가입 버튼 */}
+          <Button 
+            type="button" 
+            variant="outline" 
+            className="w-full"
+            onClick={() => setShowSignupDialog(true)}
+          >
+            회원가입
+          </Button>
+        </div>
+      </div>
+
+      {/* 회원가입 다이얼로그 */}
+      <Dialog open={showSignupDialog} onOpenChange={setShowSignupDialog}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>회원가입</DialogTitle>
+            <DialogDescription>
+              새 계정을 만들어 동아리에 가입하세요
+            </DialogDescription>
+          </DialogHeader>
+
+          <form onSubmit={handleSignup} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="signup-email">이메일</Label>
+              <Input
+                id="signup-email"
+                type="email"
+                placeholder="example@email.com"
+                value={signupEmail}
+                onChange={(e) => setSignupEmail(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="signup-password">비밀번호</Label>
+              <Input
+                id="signup-password"
+                type="password"
+                placeholder="••••••••"
+                value={signupPassword}
+                onChange={(e) => setSignupPassword(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="signup-password-confirm">비밀번호 확인</Label>
+              <Input
+                id="signup-password-confirm"
+                type="password"
+                placeholder="••••••••"
+                value={signupPasswordConfirm}
+                onChange={(e) => setSignupPasswordConfirm(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="flex gap-3 pt-2">
+              <Button type="submit" className="flex-1">
+                가입하기
+              </Button>
+              <Button 
+                type="button" 
+                variant="outline" 
+                onClick={() => setShowSignupDialog(false)}
+                className="flex-1"
+              >
+                취소
+              </Button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+}
