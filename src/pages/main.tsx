@@ -64,11 +64,12 @@ export default function MainPage() {
         ></div>
       </div>
       {/* 헤더 */}
-      <header className="bg-white border-b">
+      <header className="bg-black/30 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <h1 className="text-2xl font-bold text-gray-900">NET 홈페이지</h1>
-            <Button variant="outline" onClick={handleLogout}>
+            <h1 className="text-2xl font-bold text-white">NET 홈페이지</h1>
+            <Button variant="outline" onClick={handleLogout} 
+            className="border-white/40 text-white hover:bg-white/20 hover:text-white hover:border-white/60">
               로그아웃
             </Button>
           </div>
@@ -77,10 +78,11 @@ export default function MainPage() {
 
       {/* 메인 컨텐츠 */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-xl font-semibold mb-4">컴퓨터공학과 동아리 NET 홈페이지에 오신 것을 환영합니다!</h2>
-          <p className="text-gray-600">
-            이곳은 컴퓨터공학과 동아리 NET의 공식 홈페이지입니다. 동아리 활동, 공지사항, 프로젝트 소개 등 다양한 정보를 제공하고 있습니다. 회원 여러분의 활발한 참여와 관심 부탁드립니다!
+        <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl border border-white/20 p-6">
+          <h2 className="text-xl font-semibold mb-4 text-white">컴퓨터공학과 동아리 NET 홈페이지에 오신 것을 환영합니다!</h2>
+          <p className="text-gray-200">
+            이곳은 컴퓨터공학과 동아리 NET의 공식 홈페이지입니다. 동아리 활동, 공지사항, 프로젝트 소개 등 다양한 정보를 제공하고 있습니다. <br />
+            회원 여러분의 활발한 참여와 관심 부탁드립니다!
           </p>
         </div>
       </main>
