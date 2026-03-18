@@ -20,6 +20,9 @@ export default function MainPage() {
     navigate('/login');
   };
 
+
+  
+
   return (
     <div className="min-h-screen bg-white-50">
       {/* 헤더 */}
