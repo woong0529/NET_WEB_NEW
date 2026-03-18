@@ -78,7 +78,7 @@ export default function MainPage() {
 
       {/* 메인 컨텐츠 */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl border border-white/20 p-6">
+        <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl border border-white/20 p-6 mb-8">
           <h2 className="text-xl font-semibold mb-4 text-white">컴퓨터공학과 동아리 NET 홈페이지에 오신 것을 환영합니다!</h2>
           <p className="text-gray-200">
             이곳은 컴퓨터공학과 동아리 NET의 공식 홈페이지입니다. 동아리 활동, 공지사항, 프로젝트 소개 등 다양한 정보를 제공하고 있습니다. <br />
