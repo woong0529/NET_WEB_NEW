@@ -106,7 +106,7 @@ export default function MainPage() {
 
           {/* 사진 저장 드라이브 버튼 */}
           <button
-            onClick={() => window.open('YOUR_GOOGLE_DRIVE_PHOTOS_LINK_HERE', '_blank')}
+            onClick={() => window.open('https://drive.google.com/drive/u/1/folders/1W_plHJxNaTg8i9uskziqyGZpLxdJVTcT', '_blank')}
             className="group relative bg-white/10 backdrop-blur-md rounded-xl shadow-xl border border-white/20 p-8 hover:bg-white/20 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105"
           >
             <div className="flex flex-col items-center space-y-4">
