@@ -90,7 +90,7 @@ export default function MainPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* 자료실 버튼 */}
           <button
-            onClick={() => window.open('https://drive.google.com/drive/folders/11ERmd1dKu1VHTuS9kM5ccxfcNDDvpVEe?usp=sharing', '_blank')}
+            onClick={() => navigate('/data')}
             className="group relative bg-white/10 backdrop-blur-md rounded-xl shadow-xl border border-white/20 p-8 hover:bg-white/20 hover:border-blue-400/50 transition-all duration-300 hover:scale-105"
           >
             <div className="flex flex-col items-center space-y-4">
