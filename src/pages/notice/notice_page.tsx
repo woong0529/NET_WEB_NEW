@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { db } from '../../firebase';
 import { collection, query, orderBy, getDocs } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 interface Notice {
     id: string;
@@ -12,6 +13,7 @@ interface Notice {
 
 export default function NoticePage() {
     const [notices, setNotices] = useState<Notice[]>([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchNotices = async () => {
@@ -34,7 +36,7 @@ export default function NoticePage() {
 
                 <div className="divide-y divide-white/10 border-t border-b border-white/10">
                     {notices.map((notice) => (
-                        <div key={notice.id} className="py-4 flex justify-between items-center hover:bg-white/5 px-2 transition-colors cursor-pointer">
+                        <div key={notice.id} onClick={() => navigate(`/notice/${notice.id}`)} className="py-4 flex justify-between items-center hover:bg-white/5 px-2 transition-colors cursor-pointer">
                             <div className="flex items-center space-x-3">
                                 {notice.isImportant && (
                                     <span className="bg-red-500 text-xs px-2 py-1 rounded-full text-white font-bold">필독</span>
