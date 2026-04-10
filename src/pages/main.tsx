@@ -115,8 +115,40 @@ export default function MainPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <h1 className="text-2xl font-bold text-white">NET 홈페이지</h1>
+            <nav className="fixed top-0 w-full z-50 bg-white/10 backdrop-blur-lg border-b border-white/20 px-6 py-4">
+              <div className="max-w-7xl mx-auto flex justify-between items-center">
+                
+                {/* 메뉴 버튼들 */}
+                <div className="flex space-x-4">
+                  {/* 자료실 메뉴 */}
+                  <button
+                    onClick={() => navigate('/data')}
+                    className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-white/10 transition-all text-white"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <span className="font-medium">자료실</span>
+                  </button>
+
+                  {/* 사진 드라이브 메뉴 */}
+                  <button
+                    onClick={() => window.open('https://drive.google.com/drive/folders/1O0o5lsXt9R9nPgXLd-VKsGmZ3w2Cno6N', '_blank')}
+                    className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-white/10 transition-all text-white"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="font-medium">사진 드라이브</span>
+                  </button>
+
+                  {/* 여기에 아까 말한 '비밀번호 찾기'나 '로그아웃' 버튼을 추가하면 딱입니다! */}
+                </div>
+              </div>
+            </nav>
             <Button variant="outline" onClick={handleLogout} 
-            className="border-white/40 text-white hover:bg-white/20 hover:text-white hover:border-white/60">
+              // 수정된 className
+              className="bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:border-white/40 transition-all">
               로그아웃
             </Button>
           </div>
@@ -126,9 +158,9 @@ export default function MainPage() {
       {/* 메인 컨텐츠 */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl border border-white/20 p-6 mb-8">
-          <h2 className="text-xl font-semibold mb-4 text-white">컴퓨터공학과 동아리 NET 홈페이지에 오신 것을 환영합니다!</h2>
+          <h2 className="text-xl font-semibold mb-4 text-white">소프트웨어융합대학 동아리 NET 홈페이지에 오신 것을 환영합니다!</h2>
           <p className="text-gray-200">
-            이곳은 컴퓨터공학과 동아리 NET의 공식 홈페이지입니다. 동아리 활동, 공지사항, 프로젝트 소개 등 다양한 정보를 제공하고 있습니다. <br />
+            이곳은 소프트웨어융합대학 동아리 NET의 공식 홈페이지입니다. 동아리 활동, 공지사항, 프로젝트 소개 등 다양한 정보를 제공하고 있습니다. <br />
             회원 여러분의 활발한 참여와 관심 부탁드립니다!
           </p>
         </div>
@@ -171,41 +203,6 @@ export default function MainPage() {
               </div>
             ))}
           </div>
-        </div> 
-
-        {/* 메뉴 버튼들 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* 자료실 버튼 */}
-          <button
-            onClick={() => navigate('/data')}
-            className="group relative bg-white/10 backdrop-blur-md rounded-xl shadow-xl border border-white/20 p-8 hover:bg-white/20 hover:border-blue-400/50 transition-all duration-300 hover:scale-105"
-          >
-            <div className="flex flex-col items-center space-y-4">
-              <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center group-hover:bg-blue-500/30 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-white">자료실</h3>
-              <p className="text-gray-300 text-center">동아리 학습 자료 및 문서를 확인하세요</p>
-            </div>
-          </button>
-
-          {/* 사진 저장 드라이브 버튼 */}
-          <button
-            onClick={() => window.open('https://drive.google.com/drive/folders/1O0o5lsXt9R9nPgXLd-VKsGmZ3w2Cno6N', '_blank')}
-            className="group relative bg-white/10 backdrop-blur-md rounded-xl shadow-xl border border-white/20 p-8 hover:bg-white/20 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105"
-          >
-            <div className="flex flex-col items-center space-y-4">
-              <div className="w-16 h-16 bg-cyan-500/20 rounded-full flex items-center justify-center group-hover:bg-cyan-500/30 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-white">사진 저장 드라이브</h3>
-              <p className="text-gray-300 text-center">동아리 활동 사진을 저장하고 공유하세요</p>
-            </div>
-          </button>
         </div>
       </main>
     </div>
