@@ -182,7 +182,7 @@ export default function LoginPage() {
           <Button
             type="button"
             onClick={handleForgotPassword}
-            className="text-sm text-blue-500 hover:underline mt-2"
+            className="text-sm text-white hover:underline mt-2"
           >
             비밀번호를 잊으셨나요?
           </Button>
