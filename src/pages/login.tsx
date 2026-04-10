@@ -9,6 +9,7 @@ import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { db } from '../firebase'; // firebase.ts에서 getFirestore(app) 내보내기 필요
 import { doc, setDoc, getDoc } from "firebase/firestore";
+import { sendPasswordResetEmail } from "firebase/auth";
 
 import netBackground from '../assets/net_web_main.png'; // 배경 이미지 경로
 
@@ -106,6 +107,23 @@ export default function LoginPage() {
     }
   };
 
+  const handleForgotPassword = async () => {
+    const emailInput = prompt("비밀번호 재설정 링크를 보낼 이메일을 입력하세요:");
+
+    if (!emailInput) return;
+
+    try {
+      await sendPasswordResetEmail(auth, emailInput);
+      alert("이메일로 비밀번호 재설정 링크를 보냈습니다! 스팸 메일함도 확인해 보세요.");
+    } catch (error: any) {
+      if (error.code === "auth/user-not-found") {
+        alert("해당 이메일로 가입된 유저가 없습니다.");
+      } else {
+        alert("에러 발생: " + error.message);
+      }
+    }
+  };
+
 
 // 웹페이지 디자인 코드 부분  
   return (
@@ -160,6 +178,15 @@ export default function LoginPage() {
                 {message && <p id="message" className="text-red-500">{message}</p>}
               </div>
             </form>
+
+          <Button
+            type="button"
+            onClick={handleForgotPassword}
+            className="text-sm text-blue-500 hover:underline mt-2"
+          >
+            비밀번호를 잊으셨나요?
+          </Button>
+
 
             {/* 구분선 */}
             <div className="relative">
