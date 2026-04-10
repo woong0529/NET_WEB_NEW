@@ -4,6 +4,7 @@ import MainPage from './pages/main.tsx';
 import DataPage from './pages/data_page.tsx';
 import AdminPage from './pages/admin_page.tsx';
 import AboutPage from './pages/about_page.tsx';
+import NoticePage from './pages/notice_page.tsx';
 
 export const router = createBrowserRouter([
   {
@@ -33,5 +34,9 @@ export const router = createBrowserRouter([
   {
     path: '/about',
     element: <AboutPage />
+  },
+  {
+    path: '/notice',
+    element: <NoticePage />
   }
 ]);
