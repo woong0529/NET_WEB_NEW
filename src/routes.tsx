@@ -4,7 +4,8 @@ import MainPage from './pages/main.tsx';
 import DataPage from './pages/data_page.tsx';
 import AdminPage from './pages/admin_page.tsx';
 import AboutPage from './pages/about_page.tsx';
-import NoticePage from './pages/notice_page.tsx';
+import NoticePage from './pages/notice/notice_page.tsx';
+import NoticeDetailPage from './pages/notice/notice_detail.tsx';
 
 export const router = createBrowserRouter([
   {
@@ -38,5 +39,9 @@ export const router = createBrowserRouter([
   {
     path: '/notice',
     element: <NoticePage />
+  },
+  {
+    path: '/notice/:id',
+    element: <NoticeDetailPage />
   }
 ]);

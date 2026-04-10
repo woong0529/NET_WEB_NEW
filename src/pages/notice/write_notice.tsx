@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { db, auth } from '../firebase';
+import { db, auth } from '../../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../components/ui/dialog';
-import { Button } from '../components/ui/button';
-import { Input } from '../components/ui/input';
-import { Textarea } from '../components/ui/textarea';
-import { Label } from '../components/ui/label';
-import { Checkbox } from '../components/ui/checkbox';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../../components/ui/dialog';
+import { Button } from '../../components/ui/button';
+import { Input } from '../../components/ui/input';
+import { Textarea } from '../../components/ui/textarea';
+import { Label } from '../../components/ui/label';
+import { Checkbox } from '../../components/ui/checkbox';
 
 export default function NoticeWriteDialog({ onSave }: { onSave: () => void }) {
     const [title, setTitle] = useState('');

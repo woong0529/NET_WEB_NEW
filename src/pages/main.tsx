@@ -197,6 +197,7 @@ export default function MainPage() {
 
         {/* 공지 리스트 */}
         <div className="space-y-3">
+          <h2 className="text-xl font-semibold mb-4 text-white">📢 최신 공지사항</h2>
           {notices.length === 0 ? (
             <p className="text-center text-gray-500 py-4">등록된 공지사항이 없습니다.</p>
           ) : (

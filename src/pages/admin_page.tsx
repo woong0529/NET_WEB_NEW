@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { db } from '../firebase';
-import { collection, query, where, getDocs, getDoc, doc, updateDoc, orderBy, limit } from 'firebase/firestore';
+import { collection, query, where, getDocs, getDoc, doc, updateDoc} from 'firebase/firestore';
 import { Button } from '../components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
-import NoticeWriteDialog from './write_notice';
+import NoticeWriteDialog from './notice/write_notice';
 
 
 interface UserData {
