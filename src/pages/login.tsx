@@ -7,6 +7,9 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { auth } from '../firebase'; // 위에서 만든 파일
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { db } from '../firebase'; // firebase.ts에서 getFirestore(app) 내보내기 필요
+import { doc, setDoc, getDoc } from "firebase/firestore";
+
 import netBackground from '../assets/net_web_main.png'; // 배경 이미지 경로
 
 export default function LoginPage() {
@@ -20,6 +23,7 @@ export default function LoginPage() {
   const [signupEmail, setSignupEmail] = useState('');
   const [signupPassword, setSignupPassword] = useState('');
   const [signupPasswordConfirm, setSignupPasswordConfirm] = useState('');
+  const [signupName, setSignupName] = useState('');
 
 // 2. 로그인 상태 감시 (기존 onAuthStateChanged)
     useEffect(() => {
@@ -38,8 +42,21 @@ export default function LoginPage() {
         e.preventDefault(); // 폼 제출 시 페이지 새로고침 방지
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            alert("환영합니다, " + userCredential.user.email + "님!");
-            navigate('/main'); // window.location.href 대신 사용
+            const user = userCredential.user;
+
+            const userDoc = await getDoc(doc(db, "users", user.uid));
+
+            if (userDoc.exists()) {
+              const userData = userDoc.data();
+              if (userData.isApproved) {
+                alert(`환영합니다, ${userData.name}님!`);
+                navigate('/main');
+              } else {
+                // 승인되지 않은 경우 즉시 로그아웃 처리
+                await auth.signOut();
+                alert("아직 승인되지 않은 계정입니다. 관리자 승인을 기다려주세요.");
+              }
+          }
         } catch (error: any) {
             setMessage("에러: " + error.message);
         }
@@ -54,14 +71,27 @@ export default function LoginPage() {
     if (signupPassword.length < 6) {
       return alert("비밀번호는 최소 6자 이상이어야 합니다.");
     }
+    if (!signupName) return alert("이름을 입력해주세요.");
     try {
-      await createUserWithEmailAndPassword(
+      const userCredential = await createUserWithEmailAndPassword(
       auth,
       signupEmail,
       signupPassword
       );
-      alert(`회원가입을 축하합니다!`);
+      const user = userCredential.user;
+      await setDoc(doc(db, "users", user.uid), {
+        uid: user.uid,
+        name: signupName,
+        email: signupEmail,
+        isAdmin: false,    // 기본값
+        isApproved: false, // 기본값
+        createdAt: new Date()
+      });
+
+      alert(`회원가입 신청이 완료되었습니다! 관리자 승인을 기다려주세요.`);
+      await auth.signOut(); // 신청 직후엔 로그아웃 상태 유지
       setShowSignupDialog(false); // 다이얼로그 닫기
+      setSignupName("");
       setSignupEmail("");
       setSignupPassword("");
       setSignupPasswordConfirm("");
@@ -164,6 +194,16 @@ export default function LoginPage() {
             </DialogHeader>
 
             <form onSubmit={handleSignup} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="signup-name">이름</Label>
+                <Input
+                  id="signup-name"
+                  placeholder="최웅철"
+                  value={signupName}
+                  onChange={(e) => setSignupName(e.target.value)}
+                  required
+                />
+              </div>
               <div className="space-y-2">
                 <Label htmlFor="signup-email">이메일</Label>
                 <Input

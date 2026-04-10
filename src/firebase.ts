@@ -1,6 +1,8 @@
 // src/firebase.ts
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyBRNJcRIChGLeaFdH7JShTM7_ZJnjP8R-w",
@@ -13,3 +15,4 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app); // 이제 다른 파일에서 이 'auth'를 불러다 쓸 거예요!
+export const db = getFirestore(app);
