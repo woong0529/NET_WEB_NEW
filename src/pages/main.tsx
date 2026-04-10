@@ -111,46 +111,51 @@ export default function MainPage() {
         ></div>
       </div>
       {/* 헤더 */}
-      <header className="bg-black/30 backdrop-blur-md border-b border-white/10">
+      <header className="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <h1 className="text-2xl font-bold text-white">NET 홈페이지</h1>
-            <nav className="fixed top-0 w-full z-50 bg-white/10 backdrop-blur-lg border-b border-white/20 px-6 py-4">
-              <div className="max-w-7xl mx-auto flex justify-between items-center">
-                
-                {/* 메뉴 버튼들 */}
-                <div className="flex space-x-4">
-                  {/* 자료실 메뉴 */}
-                  <button
-                    onClick={() => navigate('/data')}
-                    className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-white/10 transition-all text-white"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                    <span className="font-medium">자료실</span>
-                  </button>
 
-                  {/* 사진 드라이브 메뉴 */}
-                  <button
-                    onClick={() => window.open('https://drive.google.com/drive/folders/1O0o5lsXt9R9nPgXLd-VKsGmZ3w2Cno6N', '_blank')}
-                    className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-white/10 transition-all text-white"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <span className="font-medium">사진 드라이브</span>
-                  </button>
+            {/* 1. 로고 영역 (좌측) */}
+            <div className="flex-shrink-0 cursor-pointer" onClick={() => navigate('/')}>
+              <h1 className="text-2xl font-bold text-white">NET 홈페이지</h1>
+            </div>
 
-                  {/* 여기에 아까 말한 '비밀번호 찾기'나 '로그아웃' 버튼을 추가하면 딱입니다! */}
-                </div>
-              </div>
-            </nav>
-            <Button variant="outline" onClick={handleLogout} 
-              // 수정된 className
-              className="bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:border-white/40 transition-all">
-              로그아웃
-            </Button>
+            {/* 2. 네비게이션 & 버튼 영역 (우측) */}
+            <div className="flex items-center space-x-4">
+              {/* 자료실 메뉴 */}
+              <button
+                onClick={() => navigate('/data')}
+                className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-white/10 transition-all text-white text-sm"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span className="font-medium">자료실</span>
+              </button>
+
+              {/* 사진 드라이브 메뉴 */}
+              <button
+                onClick={() => window.open('https://drive.google.com/drive/folders/1O0o5lsXt9R9nPgXLd-VKsGmZ3w2Cno6N', '_blank')}
+                className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-white/10 transition-all text-white text-sm"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <span className="font-medium">사진 드라이브</span>
+              </button>
+
+              {/* 구분선 (선택사항: 메뉴와 로그아웃 버튼 사이) */}
+              <div className="w-px h-6 bg-white/20 mx-2"></div>
+
+              {/* 로그아웃 버튼 */}
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 bg-white/10 border border-white/20 text-white text-sm rounded-lg hover:bg-white/20 hover:border-white/40 transition-all"
+              >
+                로그아웃
+              </button>
+            </div>
+
           </div>
         </div>
       </header>
