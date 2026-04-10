@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import LoginPage from './pages/login.tsx';
 import MainPage from './pages/main.tsx';
 import DataPage from './pages/data_page.tsx';
+import AdminPage from './pages/admin_page.tsx';
 
 export const router = createBrowserRouter([
   {
@@ -23,5 +24,9 @@ export const router = createBrowserRouter([
   {
     path: '/data',
     element: <DataPage />,
+  },
+  {
+    path: "/admin",
+    element: <AdminPage />
   }
 ]);
