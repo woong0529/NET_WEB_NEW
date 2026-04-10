@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom' // 혹은 'react-router'
 import { router } from '../routes.tsx' // 방금 고친 그 파일
 import '../styles/index.css'
-import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { useState, useEffect } from 'react';
 import { auth, db } from '../firebase';
 import { onAuthStateChanged } from "firebase/auth";
@@ -18,50 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   </React.StrictMode>,
 )
 
-const executives = [
-  {
-    id: 1,
-    name: '정인선',
-    position: '회장',
-    message: '한마디',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop'
-  },
-  {
-    id: 2,
-    name: '송동현',
-    position: '부회장',
-    message: '한마디',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop'
-  },
-  {
-    id: 3,
-    name: '강성윤',
-    position: '총무',
-    message: '한마디',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop'
-  },
-  {
-    id: 4,
-    name: '최웅철',
-    position: '교육부장',
-    message: '한마디',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop'
-  },
-  {
-    id: 5,
-    name: '박혜민',
-    position: '홍보부장',
-    message: '한마디',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop'
-  },
-  {
-    id: 6,
-    name: '고강민',
-    position: '기획부장',
-    message: '한마디',
-    image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop'
-  }
-];
+
 
 
 export default function MainPage() {
@@ -172,6 +128,16 @@ export default function MainPage() {
                 <span className="font-medium">사진 드라이브</span>
               </button>
 
+              <button
+                onClick={() => navigate('/about')}
+                className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-white/10 transition-all text-white text-sm"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="font-medium">넷 소개</span>
+              </button>
+
               {/* 구분선 (선택사항: 메뉴와 로그아웃 버튼 사이) */}
               <div className="w-px h-6 bg-white/20 mx-2"></div>
 
@@ -195,46 +161,6 @@ export default function MainPage() {
             이곳은 소프트웨어융합대학 동아리 NET의 공식 홈페이지입니다. 동아리 활동, 공지사항, 프로젝트 소개 등 다양한 정보를 제공하고 있습니다. <br />
             회원 여러분의 활발한 참여와 관심 부탁드립니다!
           </p>
-        </div>
-
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold text-white mb-6 text-center">임원진 소개</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {executives.map((executive) => (
-              <div
-                key={executive.id}
-                className="bg-white/10 backdrop-blur-md rounded-xl shadow-xl border border-white/20 p-6 hover:bg-white/15 hover:border-blue-400/50 transition-all duration-300 hover:scale-105"
-              >
-                <div className="flex flex-col items-center space-y-4">
-                  {/* 프로필 사진 */}
-                  <div className="relative">
-                    <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-blue-400/30 hover:border-blue-400/60 transition-colors">
-                      <ImageWithFallback
-                        src={executive.image}
-                        alt={executive.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    {/* 글로우 효과 */}
-                    <div className="absolute inset-0 bg-blue-500/10 rounded-full blur-xl -z-10"></div>
-                  </div>
-
-                  {/* 이름 */}
-                  <h3 className="text-xl font-bold text-white">{executive.name}</h3>
-
-                  {/* 직책 */}
-                  <div className="px-4 py-1 bg-blue-500/20 rounded-full border border-blue-400/40">
-                    <p className="text-sm text-blue-300 font-semibold">{executive.position}</p>
-                  </div>
-
-                  {/* 한마디 */}
-                  <p className="text-gray-300 text-center text-sm italic">
-                    "{executive.message}"
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </main>
     </div>

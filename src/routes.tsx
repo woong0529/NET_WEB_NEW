@@ -3,6 +3,7 @@ import LoginPage from './pages/login.tsx';
 import MainPage from './pages/main.tsx';
 import DataPage from './pages/data_page.tsx';
 import AdminPage from './pages/admin_page.tsx';
+import AboutPage from './pages/about_page.tsx';
 
 export const router = createBrowserRouter([
   {
@@ -28,5 +29,9 @@ export const router = createBrowserRouter([
   {
     path: "/admin",
     element: <AdminPage />
+  },
+  {
+    path: '/about',
+    element: <AboutPage />
   }
 ]);
