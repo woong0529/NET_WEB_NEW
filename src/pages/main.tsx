@@ -6,6 +6,10 @@ import { RouterProvider } from 'react-router-dom' // 혹은 'react-router'
 import { router } from '../routes.tsx' // 방금 고친 그 파일
 import '../styles/index.css'
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { useState, useEffect } from 'react';
+import { auth, db } from '../firebase';
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -62,12 +66,26 @@ const executives = [
 
 export default function MainPage() {
   const navigate = useNavigate();
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const handleLogout = () => {
     navigate('/login');
   };
 
+  useEffect(() => {
+    // 1. 현재 로그인한 유저 상태 감시
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        // 2. 로그인된 유저가 있다면 Firestore에서 isAdmin 필드 확인
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists() && userDoc.data().isAdmin) {
+          setIsAdmin(true);
+        }
+      }
+    });
 
+    return () => unsubscribe(); // 클린업 함수
+  }, []);
 
 
   return (
@@ -119,6 +137,16 @@ export default function MainPage() {
             <div className="flex-shrink-0 cursor-pointer" onClick={() => navigate('/')}>
               <h1 className="text-2xl font-bold text-white">NET 홈페이지</h1>
             </div>
+
+            {isAdmin && (
+              <Button
+                variant="ghost"
+                onClick={() => navigate('/admin')}
+                className="text-yellow-400 hover:text-yellow-300 font-bold"
+              >
+                승인 관리
+              </Button>
+            )}
 
             {/* 2. 네비게이션 & 버튼 영역 (우측) */}
             <div className="flex items-center space-x-4">
