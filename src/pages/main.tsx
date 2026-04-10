@@ -148,12 +148,11 @@ export default function MainPage() {
               <div className="w-px h-6 bg-white/20 mx-2"></div>
 
               {/* 로그아웃 버튼 */}
-              <button
+              <Button
                 onClick={handleLogout}
-                className="px-4 py-2 bg-white/10 border border-white/20 text-white text-sm rounded-lg hover:bg-white/20 hover:border-white/40 transition-all"
-              >
+                className="px-4 py-2 bg-white/10 border border-white/20 text-white text-sm rounded-lg hover:bg-white/20 hover:border-white/40 transition-all">
                 로그아웃
-              </button>
+              </Button>
             </div>
 
           </div>
