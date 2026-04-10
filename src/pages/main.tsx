@@ -8,7 +8,9 @@ import '../styles/index.css'
 import { useState, useEffect } from 'react';
 import { auth, db } from '../firebase';
 import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, collection, query, orderBy, limit, getDocs } from "firebase/firestore";
+
+
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -17,12 +19,19 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   </React.StrictMode>,
 )
 
+interface Notice { 
+  id: string;
+  title: string;
+  createdAt: any;
+  isImportant: boolean;
+}
 
 
 
 export default function MainPage() {
   const navigate = useNavigate();
   const [isAdmin, setIsAdmin] = useState(false);
+  const [notices, setNotices] = useState<Notice[]>([]);
 
   const handleLogout = () => {
     navigate('/login');
@@ -41,6 +50,29 @@ export default function MainPage() {
     });
 
     return () => unsubscribe(); // 클린업 함수
+  }, []);
+
+  useEffect(() => {
+    const fetchLatestNotices = async () => {
+      try {
+        // 최신순 정렬 후 딱 3개만 가져오기 (전공자의 쿼리 최적화!)
+        const q = query(
+          collection(db, "notices"),
+          orderBy("createdAt", "desc"),
+          limit(3)
+        );
+        const querySnapshot = await getDocs(q);
+        const data = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        })) as Notice[];
+        setNotices(data);
+      } catch (error) {
+        console.error("공지 로딩 실패:", error);
+      }
+    };
+
+    fetchLatestNotices();
   }, []);
 
 
@@ -162,6 +194,41 @@ export default function MainPage() {
             회원 여러분의 활발한 참여와 관심 부탁드립니다!
           </p>
         </div>
+
+        {/* 공지 리스트 */}
+        <div className="space-y-3">
+          {notices.length === 0 ? (
+            <p className="text-center text-gray-500 py-4">등록된 공지사항이 없습니다.</p>
+          ) : (
+            notices.map((notice) => (
+              <div
+                key={notice.id}
+                onClick={() => navigate(`/notice/${notice.id}`)}
+                className="group flex items-center justify-between p-4 rounded-xl bg-white/5 border border-transparent hover:border-white/20 hover:bg-white/10 transition-all cursor-pointer"
+              >
+                <div className="flex items-center gap-3">
+                  {notice.isImportant && (
+                    <span className="bg-red-500/20 text-red-400 text-[10px] font-bold px-2 py-0.5 rounded border border-red-500/50">
+                      필독
+                    </span>
+                  )}
+                  <span className="text-gray-200 group-hover:text-white font-medium line-clamp-1">
+                    {notice.title}
+                  </span>
+                </div>
+                <span className="text-xs text-gray-500 whitespace-nowrap ml-4">
+                  {notice.createdAt?.toDate().toLocaleDateString('ko-KR', { month: '2-digit', day: '2-digit' })}
+                </span>
+              </div>
+            ))
+          )}
+        </div>
+
+        <Button
+          onClick={() => navigate('/notice')}
+          className="mt-6 w-full md:w-auto px-4 py-2 bg-blue-500/20 border border-blue-400/40 text-blue-300 text-sm rounded-lg hover:bg-blue-500/30 hover:border-blue-400/60 transition-all">
+          공지사항 더보기
+        </Button>
       </main>
     </div>
   );
