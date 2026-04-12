@@ -231,6 +231,24 @@ export default function MainPage() {
           className="mt-6 w-full md:w-auto px-4 py-2 bg-blue-500/20 border border-blue-400/40 text-blue-300 text-sm rounded-lg hover:bg-blue-500/30 hover:border-blue-400/60 transition-all">
           공지사항 더보기
         </Button>
+
+        <div className="w-full max-w-5xl mx-auto py-12 px-4">
+          <h2 className="text-2xl font-bold text-white mb-6">📅 동아리 일정</h2>
+
+          {/* 달력 컨테이너: 다크 모드 배경과 조화를 위해 테두리 처리 */}
+          <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-white">
+            <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Asia%2FSeoul&showPrint=0&title=NET%20%EC%BA%98%EB%A6%B0%EB%8D%94&src=Y3djMDUyOUBraHUuYWMua3I&src=a28uc291dGhfa29yZWEjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039be5&color=%230b8043" 
+            style={{ border: 'solid 1px #777' }} 
+            className="w-full h-[600px]"
+            frameBorder="0" 
+            scrolling="no"
+            ></iframe>
+          </div>
+
+          <p className="mt-4 text-gray-400 text-sm text-center">
+            * 일정을 클릭하면 상세 정보를 확인할 수 있습니다.
+          </p>
+        </div>
       </main>
     </div>
   );
