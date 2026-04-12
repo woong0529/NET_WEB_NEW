@@ -184,6 +184,7 @@ export default function MainPage() {
           </div>
         </div>
       </header>
+      <div className="h-16"></div> {/* 헤더 높이만큼 패딩 */}
 
       {/* 메인 컨텐츠 */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
