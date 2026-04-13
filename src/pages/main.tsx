@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 import { auth, db } from '../firebase';
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc, collection, query, orderBy, limit, getDocs } from "firebase/firestore";
-
+import logoImg from '../assets/NET_logo.png';
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -123,7 +123,17 @@ export default function MainPage() {
 
             {/* 1. 로고 영역 (좌측) */}
             <div className="flex-shrink-0 cursor-pointer" onClick={() => navigate('/')}>
-              <h1 className="text-2xl font-bold text-white">NET 홈페이지</h1>
+              <img 
+                src={logoImg}
+                alt="NET 동아리 로고" // 웹 접근성: 필수!
+                className="
+                h-8        /* 모바일: 높이 2rem(32px) 고정 */
+                md:h-10     /* 태블릿 이상: 높이 2.5rem(40px) */
+                w-auto      /* 비율 유지 */
+                object-contain /* 이미지 비율 보존 */
+                transition-transform group-hover:scale-105 /* 호버 시 살짝 커지는 효과 */
+                "
+              />
             </div>
 
             {isAdmin && (
