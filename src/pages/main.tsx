@@ -75,7 +75,6 @@ export default function MainPage() {
     fetchLatestNotices();
   }, []);
 
-
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* 배경 - 검은색 베이스 + 테크 느낌 */}
@@ -263,3 +262,48 @@ export default function MainPage() {
     </div>
   );
 }
+
+const Footer = () => {
+  return (
+    <footer className="bg-gray-900 text-gray-300 py-10 mt-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
+          
+          {/* 동아리 설명 영역 */}
+          <div className="md:w-1/2 text-center md:text-left">
+            <h2 className="text-2xl font-bold text-white mb-3">NET</h2>
+            <p className="text-sm leading-relaxed">
+              웹과 인공지능의 경계를 허무는 개발 동아리입니다. <br />
+              함께 성장하고 새로운 가치를 만들어갑니다.
+            </p>
+          </div>
+
+          {/* 위치 및 연락처 영역 */}
+          <div className="md:w-1/2 flex flex-col items-center md:items-end text-sm gap-2">
+            <div className="flex items-center gap-2">
+              <span>📍 위치:</span>
+              <p>경희대학교 국제캠퍼스 ㅇㅇ관 ㅇㅇ호</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <span>📸 인스타그램:</span>
+              <a 
+                href="https://instagram.com/실제주소" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+              >
+                @net_khu_official
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        {/* 저작권 표시 */}
+        <div className="border-t border-gray-700 mt-8 pt-6 text-center text-xs">
+          <p>&copy; {new Date().getFullYear()} NET. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
