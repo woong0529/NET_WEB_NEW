@@ -269,7 +269,6 @@ const Footer = () => {
     <footer className="bg-gray-900/50 backdrop-blur-md text-gray-300 py-12 mt-20 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* 3단 그리드 레이아웃 적용 (모바일에서는 세로로, PC에서는 가로 3칸으로) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
           
           {/* 1. 좌측: 동아리 이름 및 설명 */}
@@ -277,9 +276,8 @@ const Footer = () => {
             <h2 className="text-2xl font-bold text-white">N.E.T</h2>
             <p className="text-sm leading-relaxed text-gray-400">
               알고리즘, AI 등 다양한 학술 주제를 탐구하며 <br className="hidden md:block" />
-              자유로운 활동을 추구하는 학술 및 친목 동아리
+              자유로운 활동을 추구하는 학술 및 친목 동아리.
             </p>
-            {/* 저작권 표시 (참고 사진처럼 좌측 하단에 배치) */}
             <p className="text-xs text-gray-500 pt-4 mt-auto">
               Copyright &copy; {new Date().getFullYear()} N.E.T. All Rights Reserved.
             </p>
@@ -298,22 +296,15 @@ const Footer = () => {
           <div className="flex flex-col space-y-4">
             <h3 className="text-lg font-semibold text-white">Connect</h3>
             
-            {/* 전화번호 */}
-            <div className="flex items-center gap-3 text-sm text-gray-400">
-              {/* 작은 전화기 아이콘 */}
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
-              <span>010-5960-6353</span> {/* 👈 여기에 실제 회장/부회장 전화번호를 적어주세요 */}
-            </div>
-
-            {/* 인스타그램 아이콘 (사진처럼 동그란 원형 버튼 스타일) */}
-            <div className="flex items-center gap-4 pt-1">
+            {/* ✨ 가로로 나란히 배치: 인스타 아이콘 -> 전화번호 ✨ */}
+            <div className="flex items-center gap-4">
+              
+              {/* 인스타그램 버튼 (왼쪽) */}
               <a 
                 href="https://www.instagram.com/khu_net/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-110 transition-all group"
+                className="flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-110 transition-all group"
                 aria-label="Instagram"
               >
                 <svg 
@@ -333,9 +324,18 @@ const Footer = () => {
                   <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
                 </svg>
               </a>
-            </div>
 
+              {/* 전화번호 (오른쪽) */}
+              <div className="flex items-center gap-2 text-sm text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span> 010-5960-6353 정인선 </span>
+              </div>
+
+            </div>
           </div>
+
         </div>
       </div>
     </footer>
