@@ -292,7 +292,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* 3. 우측: 연락처 (Connect) */}
+          {/* 3. 우측: 연락처 (Contact) */}
           <div className="flex flex-col space-y-4">
             <h3 className="text-lg font-semibold text-white">Connect</h3>
             
