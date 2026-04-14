@@ -64,13 +64,6 @@ export default function LoginPage() {
     };
 
   const handleSignup = async (e: React.FormEvent) => {
-    // 가입 로직 최상단에 추가
-    const q = query(collection(db, "users"), where("email", "==", signupEmail));
-    const existingDocs = await getDocs(q);
-
-    if (!existingDocs.empty) {
-      return alert("이미 신청된 이메일입니다. 관리자 승인을 기다려주세요.");
-    }
     e.preventDefault();
     // 회원가입 로직
     if (signupPassword !== signupPasswordConfirm) {
