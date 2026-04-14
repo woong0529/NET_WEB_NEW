@@ -275,7 +275,7 @@ const Footer = () => {
             <h2 className="text-2xl font-bold text-white mb-3">N.E.T</h2>
             <p className="text-sm leading-relaxed">
               알고리즘, AI 등 다양한 학술 주제를 탐구하며 <br />
-              자유로운 활동을 추구하는 학술 및 친목 동아리
+              자유로운 활동을 추구하는 학술 및 친목 동아리.
             </p>
           </div>
 
@@ -314,6 +314,7 @@ const Footer = () => {
           </div>
 
         </div>
+
 
         {/* 저작권 표시 */}
         <div className="border-t border-gray-700 mt-8 pt-6 text-center text-xs">
