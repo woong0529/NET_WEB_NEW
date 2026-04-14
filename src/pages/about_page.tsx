@@ -1,7 +1,10 @@
+
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import '../styles/index.css'
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import gangmin_img from 'src/assets/gangmin_intro_img.jpg';
+
 
 const executives = [
   {
@@ -44,7 +47,7 @@ const executives = [
     name: '고강민',
     position: '기획부장',
     message: '사이트 기여도 추가',
-    image: 'C:\Users\OWNER\Desktop\넷 홈페이지\NET_WEB_NEW\src\assets\고강민 소개 사진.jpg'
+    image: gangmin_img
   }
 ];
 
