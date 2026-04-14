@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import '../styles/index.css'
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import gangmin_img from 'src/assets/gangmin_intro_img.jpg';
+import gangmin_img from '../assets/gangmin_intro_img.jpg';
 
 
 const executives = [
