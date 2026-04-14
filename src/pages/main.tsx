@@ -294,7 +294,7 @@ const Footer = () => {
 
           {/* 3. 우측: 연락처 (Contact) */}
           <div className="flex flex-col space-y-4">
-            <h3 className="text-lg font-semibold text-white">Connect</h3>
+            <h3 className="text-lg font-semibold text-white">Contact</h3>
             
             {/* ✨ 가로로 나란히 배치: 인스타 아이콘 -> 전화번호 ✨ */}
             <div className="flex items-center gap-4">
