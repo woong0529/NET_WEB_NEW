@@ -43,7 +43,7 @@ const executives = [
     id: 6,
     name: '고강민',
     position: '기획부장',
-    message: '한마디',
+    message: '사이트 기여도 추가',
     image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop'
   }
 ];
