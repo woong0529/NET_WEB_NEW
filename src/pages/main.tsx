@@ -259,6 +259,7 @@ export default function MainPage() {
           </p>
         </div>
       </main>
+      <Footer/>
     </div>
   );
 }
