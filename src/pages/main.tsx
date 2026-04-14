@@ -272,10 +272,10 @@ const Footer = () => {
           
           {/* 동아리 설명 영역 */}
           <div className="md:w-1/2 text-center md:text-left">
-            <h2 className="text-2xl font-bold text-white mb-3">NET</h2>
+            <h2 className="text-2xl font-bold text-white mb-3">N.E.T</h2>
             <p className="text-sm leading-relaxed">
-              웹과 인공지능의 경계를 허무는 개발 동아리입니다. <br />
-              함께 성장하고 새로운 가치를 만들어갑니다.
+              알고리즘, AI 등 다양한 학술 주제를 탐구하며 <br />
+              자유로운 활동을 추구하는 학술 및 친목 동아리
             </p>
           </div>
 
@@ -283,19 +283,34 @@ const Footer = () => {
           <div className="md:w-1/2 flex flex-col items-center md:items-end text-sm gap-2">
             <div className="flex items-center gap-2">
               <span>📍 위치:</span>
-              <p>경희대학교 국제캠퍼스 ㅇㅇ관 ㅇㅇ호</p>
+              <p>경희대학교 국제캠퍼스 전자정보대학관 241호</p>
             </div>
-            <div className="flex items-center gap-2">
-              <span>📸 인스타그램:</span>
-              <a 
-                href="https://instagram.com/실제주소" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
+            {/* 인스타그램 버튼 */}
+            <a 
+              href="https://www.instagram.com/khu_net/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group flex items-center gap-2 bg-white/5 hover:bg-white/10 px-4 py-2 rounded-full border border-white/10 transition-all"
+            >
+              {/* 인스타그램 아이콘 (SVG) */}
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="20" 
+                height="20" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                className="text-pink-500 group-hover:scale-110 transition-transform"
               >
-                @net_khu_official
-              </a>
-            </div>
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+              </svg>
+              <span className="group-hover:text-white transition-colors">@khu_net</span>
+            </a>
           </div>
 
         </div>
