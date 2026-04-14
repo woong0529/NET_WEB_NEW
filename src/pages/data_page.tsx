@@ -98,7 +98,7 @@ export default function DataPage() {
     
               {/* 족보 저장 버튼 */}
               <button
-                onClick={() => window.open('https://drive.google.com/drive/folders/1O0o5lsXt9R9nPgXLd-VKsGmZ3w2Cno6N', '_blank')}
+              onClick={() => window.open('https://drive.google.com/drive/folders/1lFf6ZPggqrsluG8Xu8Es07jl0wgM8FYO?usp=sharing', '_blank')}
                 className="group relative bg-white/10 backdrop-blur-md rounded-xl shadow-xl border border-white/20 p-8 hover:bg-white/20 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105"
               >
                 <div className="flex flex-col items-center space-y-4">

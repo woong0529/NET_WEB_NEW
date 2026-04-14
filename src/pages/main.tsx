@@ -128,7 +128,7 @@ export default function MainPage() {
                 alt="NET 동아리 로고" // 웹 접근성: 필수!
                 className="
                 h-8        /* 모바일: 높이 2rem(32px) 고정 */
-                md:h-10     /* 태블릿 이상: 높이 2.5rem(40px) */
+                md:h-15     /* 태블릿 이상: 높이 2.5rem(40px) */
                 w-auto      /* 비율 유지 */
                 object-contain /* 이미지 비율 보존 */
                 transition-transform group-hover:scale-105 /* 호버 시 살짝 커지는 효과 */
