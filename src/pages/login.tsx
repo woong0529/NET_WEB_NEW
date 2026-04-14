@@ -8,7 +8,7 @@ import { auth } from '../firebase'; // 위에서 만든 파일
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { db } from '../firebase'; // firebase.ts에서 getFirestore(app) 내보내기 필요
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc, query, collection, where, getDocs } from "firebase/firestore";
 import { sendPasswordResetEmail } from "firebase/auth";
 
 import netBackground from '../assets/net_web_main.png'; // 배경 이미지 경로
@@ -64,6 +64,13 @@ export default function LoginPage() {
     };
 
   const handleSignup = async (e: React.FormEvent) => {
+    // 가입 로직 최상단에 추가
+    const q = query(collection(db, "users"), where("email", "==", signupEmail));
+    const existingDocs = await getDocs(q);
+
+    if (!existingDocs.empty) {
+      return alert("이미 신청된 이메일입니다. 관리자 승인을 기다려주세요.");
+    }
     e.preventDefault();
     // 회원가입 로직
     if (signupPassword !== signupPasswordConfirm) {
@@ -80,6 +87,7 @@ export default function LoginPage() {
       signupPassword
       );
       const user = userCredential.user;
+
       await setDoc(doc(db, "users", user.uid), {
         uid: user.uid,
         name: signupName,
