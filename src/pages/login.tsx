@@ -8,10 +8,9 @@ import { auth } from '../firebase'; // 위에서 만든 파일
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { db } from '../firebase'; // firebase.ts에서 getFirestore(app) 내보내기 필요
-import { doc, setDoc, getDoc, query, collection, where, getDocs } from "firebase/firestore";
+import { doc, setDoc, getDoc} from "firebase/firestore";
 import { sendPasswordResetEmail } from "firebase/auth";
 
-import netBackground from '../assets/net_web_main.png'; // 배경 이미지 경로
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -168,7 +167,7 @@ export default function LoginPage() {
         ></div>
       </div>
         <div className="w-full max-w-md">
-          <div className="bg-white rounded-2xl shadow-xl p-8 space-y-6">
+          <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl border border-white/20 p-6 mb-8">
             {/* 헤더 */}
             <div className="text-center space-y-2">
               <h1 className="text-3xl font-bold text-gray-900">NET 로그인</h1>
