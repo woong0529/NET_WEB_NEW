@@ -5,9 +5,9 @@ import '../styles/index.css'
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import gangmin_img from '../assets/gangmin_intro_img.jpg';
 import hyemin_img from '../assets/hyemin_intro_img.jpg';
-import group_img from '../assets/our_img.jpg';
+import group_img from '../assets/net danchae_img.jpg';
 import logo_img from '../assets/NET_logo.png';
-import woong_img from '../assets/woong_intro_img.jpg';
+import woong_img from '../assets/woong_intro_img.png';
 
 
 const executives = [
