@@ -128,16 +128,45 @@ export default function LoginPage() {
 
 // 웹페이지 디자인 코드 부분  
   return (
-    <div 
-      className="min-h-screen flex items-center justify-center p-4"
-      style={{
-        backgroundImage: `url(${netBackground})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundColor: '#000000'
-      }}
-    >
-      
+    <div className="min-h-screen relative overflow-hidden flex items-center justify-center p-4">
+      {/* 배경 - 검은색 베이스 + 테크 느낌 */}
+      <div 
+        className="fixed inset-0 -z-10"
+        style={{
+          background: '#000000',
+        }}
+      >
+        {/* 그리드 패턴 */}
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px',
+          }}
+        ></div>
+        
+        {/* 밝은 파란색 원형 글로우 효과 */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-cyan-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        
+        {/* 통통 튀는 작은 사각형들 */}
+        <div className="absolute top-20 left-1/3 w-3 h-3 bg-blue-400 rounded-sm animate-bounce" style={{ animationDelay: '0.5s' }}></div>
+        <div className="absolute top-40 right-1/3 w-2 h-2 bg-cyan-300 rounded-sm animate-bounce" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute bottom-32 left-1/2 w-3 h-3 bg-blue-500 rounded-sm animate-bounce" style={{ animationDelay: '0.8s' }}></div>
+        <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-cyan-400 rounded-sm animate-bounce" style={{ animationDelay: '2s' }}></div>
+        
+        {/* 대각선 라인 효과 */}
+        <div 
+          className="absolute -top-1/2 -right-1/2 w-full h-full opacity-10"
+          style={{
+            background: 'linear-gradient(45deg, transparent 40%, rgba(59, 130, 246, 0.5) 50%, transparent 60%)',
+            transform: 'rotate(-15deg)',
+          }}
+        ></div>
+      </div>
         <div className="w-full max-w-md">
           <div className="bg-white rounded-2xl shadow-xl p-8 space-y-6">
             {/* 헤더 */}
