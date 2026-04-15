@@ -8,7 +8,7 @@ import '../styles/index.css'
 import { useState, useEffect } from 'react';
 import { auth, db } from '../firebase';
 import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc, collection, query, orderBy, limit, getDocs } from "firebase/firestore";
+import { doc, getDoc, collection, query, orderBy, limit, getDocs, deleteDoc } from "firebase/firestore";
 import logoImg from '../assets/NET_logo.png';
 
 
@@ -36,7 +36,21 @@ export default function MainPage() {
   const handleLogout = () => {
     navigate('/login');
   };
+ const handleDeleteNotice = async (e: React.MouseEvent, noticeId: string) => {
+    e.stopPropagation(); // 중요: 삭제 버튼 클릭 시 상세 페이지로 넘어가는 것 방지
+    
+    if (!window.confirm("이 공지사항을 정말 삭제하시겠습니까?")) return;
 
+    try {
+      await deleteDoc(doc(db, "notices", noticeId));
+      // 삭제 성공 시, 새로고침 없이 화면에서 즉시 지우기
+      setNotices(notices.filter(notice => notice.id !== noticeId));
+      alert("공지사항이 삭제되었습니다.");
+    } catch (error) {
+      console.error("공지 삭제 실패:", error);
+      alert("삭제에 실패했습니다.");
+    }
+  };
   useEffect(() => {
     // 1. 현재 로그인한 유저 상태 감시
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -201,7 +215,7 @@ export default function MainPage() {
           <h2 className="text-xl font-semibold mb-4 text-white">소프트웨어융합대학 동아리 NET 홈페이지에 오신 것을 환영합니다!</h2>
           <p className="text-gray-200">
             이곳은 소프트웨어융합대학 동아리 NET의 공식 홈페이지입니다. 동아리 활동, 공지사항, 프로젝트 소개 등 다양한 정보를 제공하고 있습니다. <br />
-            회원 여러분의 활발한 참여와 관심 부탁드립니다!
+            부원 여러분의 활발한 참여와 관심 부탁드립니다!
           </p>
         </div>
 
@@ -227,9 +241,27 @@ export default function MainPage() {
                     {notice.title}
                   </span>
                 </div>
-                <span className="text-xs text-gray-500 whitespace-nowrap ml-4">
-                  {notice.createdAt?.toDate().toLocaleDateString('ko-KR', { month: '2-digit', day: '2-digit' })}
-                </span>
+                <div className="flex items-center gap-3 ml-4">
+                  <span className="text-xs text-gray-500 whitespace-nowrap">
+                    {notice.createdAt?.toDate().toLocaleDateString('ko-KR', { month: '2-digit', day: '2-digit' })}
+                  </span>
+                  
+                  {/* 관리자일 때만 보이는 삭제 버튼 */}
+                  {isAdmin && (
+                    <button
+                      onClick={(e) => handleDeleteNotice(e, notice.id)}
+                      className="p-1.5 text-red-400 hover:text-red-300 hover:bg-red-500/20 rounded-md transition-colors"
+                      title="공지 삭제"
+                    >
+                      {/* 휴지통 아이콘 */}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                      </svg>
+                    </button>
+                  )}
+                </div>
               </div>
             ))
           )}
@@ -291,7 +323,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-white">Location</h3>
             <p className="text-sm text-gray-400 leading-relaxed">
               경기도 용인시 기흥구 덕영대로 1732 <br />
-              경희대학교 국제캠퍼스 전자정보대학관 241호
+              경희대학교 국제캠퍼스 전자정보대학관
             </p>
           </div>
 
@@ -332,7 +364,7 @@ const Footer = () => {
             <div className="flex items-center">
               {/* 글씨 없는 동그란 버그 아이콘 버튼 */}
               <a 
-                href="여기에_구글폼_링크를_넣어주세요" 
+                href="https://docs.google.com/forms/d/e/1FAIpQLSe7CwtxVYFOEfVLWsPoIonxczb0EEV-kLZsvprOBz4wZtKXQQ/viewform?usp=header" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-110 transition-all group"
