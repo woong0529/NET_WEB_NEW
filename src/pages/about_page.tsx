@@ -4,6 +4,9 @@ import { Button } from '../components/ui/button';
 import '../styles/index.css'
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import gangmin_img from '../assets/gangmin_intro_img.jpg';
+import hyemin_img from '../assets/hyemin_intro_img.jpg';
+import group_img from '../assets/our_img.jpg';
+import logo_img from '../assets/NET_logo.png';
 
 
 const executives = [
@@ -11,42 +14,42 @@ const executives = [
     id: 1,
     name: '정인선',
     position: '회장',
-    message: '한마디',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop'
+    message: '안녕하세요 정인선입니다',
+    image: logo_img
   },
   {
     id: 2,
     name: '송동현',
     position: '부회장',
-    message: '한마디',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop'
+    message: '안녕하세요 송동현입니다',
+    image: logo_img
   },
   {
     id: 3,
     name: '강성윤',
     position: '총무',
-    message: '한마디',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop'
+    message: '안녕하세요 강성윤입니다',
+    image: logo_img
   },
   {
     id: 4,
     name: '최웅철',
     position: '교육부장',
-    message: '한마디',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop'
+    message: '안녕하세요 최웅철입니다',
+    image: logo_img
   },
   {
     id: 5,
     name: '박혜민',
     position: '홍보부장',
-    message: '한마디',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop'
+    message: '넷에 핑크력 추가~!',
+    image: hyemin_img
   },
   {
     id: 6,
     name: '고강민',
     position: '기획부장',
-    message: '사이트 기여도 추가',
+    message: '넷츠기릿넷츠기릿넷츠기릿',
     image: gangmin_img
   }
 ];
@@ -155,6 +158,22 @@ export default function AboutPage() {
                 ))}
             </div>
             </div>
+            {/* ✨ 여기서부터 추가할 단체 사진 영역 ✨ */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 mb-20">
+                <h2 className="text-2xl font-bold text-white mb-8 text-center">N.E.T 단체 사진</h2>
+                
+                {/* 사진 컨테이너 (테두리, 그림자, 마우스 호버 효과) */}
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20 group">
+                    <img
+                        src={group_img} 
+                        alt="NET 단체 사진"
+                        className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    {/* 사진 위에 살짝 어두운 그라데이션을 주어 고급스러운 느낌 추가 */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+                </div>
+            </div>
+            {/* ✨ 단체 사진 영역 끝 ✨ */}
         </div>
     );
 }

@@ -264,6 +264,7 @@ export default function MainPage() {
   );
 }
 
+
 const Footer = () => {
   return (
     <footer className="bg-gray-900/50 backdrop-blur-md text-gray-300 py-12 mt-20 border-t border-white/10">
@@ -292,11 +293,11 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* 3. 우측: 연락처 (Contact) */}
+          {/* 3. 우측: 연락처 (Contact) 및 버그 신고 */}
           <div className="flex flex-col space-y-4">
             <h3 className="text-lg font-semibold text-white">Contact</h3>
             
-            {/*가로로 나란히 배치: 인스타 아이콘 -> 전화번호 */}
+            {/* 가로로 나란히 배치: 인스타 아이콘 -> 전화번호 */}
             <div className="flex items-center gap-4">
               
               {/* 인스타그램 버튼 (왼쪽) */}
@@ -334,6 +335,31 @@ const Footer = () => {
               </div>
 
             </div>
+
+            {/* ✨ 버그 신고 버튼 (나중에 구글폼 링크만 넣으세요) ✨ */}
+            <div className="pt-2">
+              <a 
+                href="여기에_구글폼_링크를_넣어주세요" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm text-gray-400 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:text-white transition-all w-fit group"
+              >
+                {/* 🐛 버그 아이콘 */}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:text-yellow-400 transition-colors">
+                  <rect width="8" height="14" x="8" y="6" rx="4"/>
+                  <path d="m19 7-3 2"/>
+                  <path d="m5 7 3 2"/>
+                  <path d="m19 19-3-2"/>
+                  <path d="m5 19 3-2"/>
+                  <path d="M20 13h-4"/>
+                  <path d="M4 13h4"/>
+                  <path d="m10 4 1 2"/>
+                  <path d="m14 4-1 2"/>
+                </svg>
+                <span>Bug report</span>
+              </a>
+            </div>
+
           </div>
 
         </div>
