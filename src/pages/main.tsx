@@ -277,9 +277,12 @@ export default function MainPage() {
           <h2 className="text-2xl font-bold text-white mb-6">📅 동아리 일정</h2>
 
           {/* 달력 컨테이너: 다크 모드 배경과 조화를 위해 테두리 처리 */}
-          <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-white">
+          <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-black">
             <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Asia%2FSeoul&showPrint=0&title=NET%20%EC%BA%98%EB%A6%B0%EB%8D%94&src=Y3djMDUyOUBraHUuYWMua3I&src=a28uc291dGhfa29yZWEjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039be5&color=%230b8043" 
-            style={{ border: 'solid 1px #777' }} 
+            style={{ 
+            border: '0', 
+            filter: 'invert(0.9) hue-rotate(180deg)' /* 👈 이게 핵심입니다! 하얀색을 어둡게 반전 */
+            }} 
             className="w-full h-[600px]"
             frameBorder="0" 
             scrolling="no"
