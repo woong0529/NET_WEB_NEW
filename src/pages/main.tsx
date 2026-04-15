@@ -326,7 +326,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-white">Location</h3>
             <p className="text-sm text-gray-400 leading-relaxed">
               경기도 용인시 기흥구 덕영대로 1732 <br />
-              경희대학교 국제캠퍼스 전자정보대학관
+              경희대학교 국제캠퍼스 전자정보대학관 241-5호
             </p>
           </div>
 
