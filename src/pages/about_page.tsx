@@ -151,7 +151,7 @@ export default function AboutPage() {
 
                             {/* 한마디 */}
                             <p className="text-gray-300 text-center text-sm italic">
-                                "{executive.message}"
+                                {executive.message}
                             </p>
                         </div>
                     </div>

@@ -160,7 +160,7 @@ export default function MainPage() {
 
               {/* 사진 드라이브 메뉴 */}
               <button
-                onClick={() => window.open('https://drive.google.com/drive/folders/1O0o5lsXt9R9nPgXLd-VKsGmZ3w2Cno6N', '_blank')}
+                onClick={() => window.open('https://drive.google.com/drive/u/0/folders/17K0uXbohjzxx_3DxA0m9Oq1D-lwHrWmD', '_blank')}
                 className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-white/10 transition-all text-white text-sm"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -270,21 +270,23 @@ const Footer = () => {
     <footer className="bg-gray-900/50 backdrop-blur-md text-gray-300 py-12 mt-20 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+        {/* ✨ 3단 -> 4단 그리드로 변경 (lg:grid-cols-4) ✨ */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           
           {/* 1. 좌측: 동아리 이름 및 설명 */}
           <div className="flex flex-col space-y-4">
             <h2 className="text-2xl font-bold text-white">N.E.T</h2>
             <p className="text-sm leading-relaxed text-gray-400">
-              알고리즘, AI 등 다양한 학술 주제를 탐구하며 <br className="hidden md:block" />
-              자유로운 활동을 추구하는 학술 및 친목 동아리.
+              알고리즘, AI 등 다양한 학술 주제를 <br className="hidden lg:block" />
+              탐구하며 자유로운 활동을 추구하는<br className="hidden lg:block" />
+              학술 및 친목 동아리
             </p>
             <p className="text-xs text-gray-500 pt-4 mt-auto">
               Copyright &copy; {new Date().getFullYear()} N.E.T. All Rights Reserved.
             </p>
           </div>
 
-          {/* 2. 중앙: 위치 (Location) */}
+          {/* 2. 두 번째: 위치 (Location) */}
           <div className="flex flex-col space-y-4">
             <h3 className="text-lg font-semibold text-white">Location</h3>
             <p className="text-sm text-gray-400 leading-relaxed">
@@ -293,14 +295,12 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* 3. 우측: 연락처 (Contact) 및 버그 신고 */}
+          {/* 3. 세 번째: 연락처 (Contact) */}
           <div className="flex flex-col space-y-4">
             <h3 className="text-lg font-semibold text-white">Contact</h3>
             
-            {/* 가로로 나란히 배치: 인스타 아이콘 -> 전화번호 */}
             <div className="flex items-center gap-4">
-              
-              {/* 인스타그램 버튼 (왼쪽) */}
+              {/* 인스타그램 버튼 */}
               <a 
                 href="https://www.instagram.com/khu_net/" 
                 target="_blank" 
@@ -308,44 +308,37 @@ const Footer = () => {
                 className="flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-110 transition-all group"
                 aria-label="Instagram"
               >
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  width="20" 
-                  height="20" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  className="text-gray-400 group-hover:text-pink-500 transition-colors"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 group-hover:text-pink-500 transition-colors">
                   <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                   <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
                 </svg>
               </a>
 
-              {/* 전화번호 (오른쪽) */}
-              <div className="flex items-center gap-2 text-sm text-gray-400">
+              {/* 전화번호 */}
+              <div className="flex items-center gap-2 text-sm text-gray-400 whitespace-nowrap">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                 </svg>
-                <span> 010-5960-6353 정인선 </span>
+                <span>010-5960-6353 정인선</span>
               </div>
-
             </div>
+          </div>
 
-            {/* ✨ 버그 신고 버튼 (나중에 구글폼 링크만 넣으세요) ✨ */}
-            <div className="pt-2">
+          {/* ✨ 4. 네 번째: 버그 신고 (Bug Report) ✨ */}
+          <div className="flex flex-col space-y-4">
+            <h3 className="text-lg font-semibold text-white">Bug Report</h3>
+            
+            <div className="flex items-center">
+              {/* 글씨 없는 동그란 버그 아이콘 버튼 */}
               <a 
                 href="여기에_구글폼_링크를_넣어주세요" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm text-gray-400 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:text-white transition-all w-fit group"
+                className="flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-110 transition-all group"
+                aria-label="Report a bug"
               >
-                {/* 🐛 버그 아이콘 */}
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:text-yellow-400 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 group-hover:text-yellow-400 transition-colors">
                   <rect width="8" height="14" x="8" y="6" rx="4"/>
                   <path d="m19 7-3 2"/>
                   <path d="m5 7 3 2"/>
@@ -356,10 +349,8 @@ const Footer = () => {
                   <path d="m10 4 1 2"/>
                   <path d="m14 4-1 2"/>
                 </svg>
-                <span>Bug report</span>
               </a>
             </div>
-
           </div>
 
         </div>
