@@ -170,8 +170,8 @@ export default function LoginPage() {
           <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl border border-white/20 p-6 mb-8">
             {/* 헤더 */}
             <div className="text-center space-y-2">
-              <h1 className="text-3xl font-bold text-gray-900">NET 로그인</h1>
-              <p className="text-gray-500">계정에 로그인하세요</p>
+              <h1 className="text-3xl font-bold text-white">NET 로그인</h1>
+              <p className="text-white">계정에 로그인하세요</p>
             </div>
 
             {/* 로그인 폼 */}
