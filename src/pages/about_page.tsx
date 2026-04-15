@@ -7,6 +7,7 @@ import gangmin_img from '../assets/gangmin_intro_img.jpg';
 import hyemin_img from '../assets/hyemin_intro_img.jpg';
 import group_img from '../assets/our_img.jpg';
 import logo_img from '../assets/NET_logo.png';
+import woong_img from '../assets/woong_intro_img.jpg';
 
 
 const executives = [
@@ -35,8 +36,8 @@ const executives = [
     id: 4,
     name: '최웅철',
     position: '교육부장',
-    message: '안녕하세요 최웅철입니다',
-    image: logo_img
+    message: '홈페이지 이쁘게 봐주세요~',
+    image: woong_img
   },
   {
     id: 5,
