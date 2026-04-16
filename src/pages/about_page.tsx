@@ -6,8 +6,11 @@ import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import gangmin_img from '../assets/gangmin_intro_img.jpg';
 import hyemin_img from '../assets/hyemin_intro_img.jpg';
 import group_img from '../assets/net danchae_img.jpg';
-import logo_img from '../assets/NET_logo.png';
 import woong_img from '../assets/woong_intro_img.png';
+import seon_img from '../assets/seon_intro_img.jpg';
+import yoon_img from '../assets/yoon_intro_img.jpg';
+import dong_img from '../assets/dong_intro_img.jpg';
+
 
 
 const executives = [
@@ -15,22 +18,22 @@ const executives = [
     id: 1,
     name: '정인선',
     position: '회장',
-    message: '안녕하세요 정인선입니다',
-    image: logo_img
+    message: '그냥 회장.',
+    image: seon_img
   },
   {
     id: 2,
     name: '송동현',
     position: '부회장',
-    message: '안녕하세요 송동현입니다',
-    image: logo_img
+    message: '4 nE t ㅂ ㅜ ㅎ ㅗ ㅣ ㅈ ㅏ ㅇ',
+    image: dong_img
   },
   {
     id: 3,
     name: '강성윤',
     position: '총무',
-    message: '안녕하세요 강성윤입니다',
-    image: logo_img
+    message: '넷 총무',
+    image: yoon_img
   },
   {
     id: 4,
@@ -50,7 +53,7 @@ const executives = [
     id: 6,
     name: '고강민',
     position: '기획부장',
-    message: '넷츠기릿넷츠기릿넷츠기릿',
+    message: '행사 참여율 떨어지면 내 탓',
     image: gangmin_img
   }
 ];

@@ -130,7 +130,7 @@ export default function MainPage() {
         ></div>
       </div>
       {/* 헤더 */}
-      <header className="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-md border-b border-white/10">
+      <header className="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-lg border-b border-white/5 shadow-lg shadow-blue-10000/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
 
@@ -208,7 +208,35 @@ export default function MainPage() {
         </div>
       </header>
       <div className="h-16"></div> {/* 헤더 높이만큼 패딩 */}
+      <div className="relative w-full min-h-[70vh] flex flex-row items-center justify-center px-4 mb-12 overflow-hidden">
+        
+        {/* 배경 은은한 빛 효과 */}
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 via-transparent to-transparent -z-10"></div>
 
+        {/* 왼쪽에 크게 N.E.T 추가 */}
+        <div className="flex flex-col items-center justify-center -translate-y-1/4">
+          <h1 className="text-9xl md:text-[14rem] font-extrabold text-white tracking-tighter">N.E.T</h1>
+        </div> {/* 👈 문제의 원인이었던 오타를 </div> 로 수정했습니다! */}
+
+        {/* 기존 세 줄을 오른쪽으로 옮기고, 크기 줄이고, 정렬 */}
+        <div className="flex flex-col items-start ml-16 md:ml-24 -translate-y-1/4">
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight">
+            <span className="text-blue-400">N</span><span className="text-white">etwork</span>
+          </h1>
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight">
+            <span className="text-blue-400">E</span><span className="text-white">nhanced</span>
+          </h1>
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight">
+            <span className="text-blue-400">T</span><span className="text-white">echnology</span>
+          </h1>
+        </div>
+
+        {/* 하단 스크롤 유도 애니메이션 */}
+        <div className="absolute bottom-10 text-gray-500 text-xs tracking-widest flex flex-col items-center gap-3 animate-bounce z-0">
+          <span>SCROLL</span>
+          <div className="w-px h-12 bg-gradient-to-b from-gray-500 to-transparent"></div>
+        </div>
+      </div>
       {/* 메인 컨텐츠 */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl border border-white/20 p-6 mb-8">
