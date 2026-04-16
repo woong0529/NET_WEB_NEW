@@ -50,11 +50,11 @@ export default function NoticeWriteDialog({ onSave }: { onSave: () => void }) {
                     새 공지사항 작성
                 </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[525px] bg-slate-900 text-white border-white/20">
+            <DialogContent className="sm:max-w-[525px] max-h-[90vh] flex flex-col bg-slate-900 text-white border-white/20">
                 <DialogHeader>
                     <DialogTitle className="text-2xl font-bold">📢 새 공지사항 등록</DialogTitle>
                 </DialogHeader>
-                <form onSubmit={handleSubmit} className="space-y-6 pt-4">
+                <form onSubmit={handleSubmit} className="space-y-6 flex-1 overflow-y-auto px-6 py-4 custom-scrollbar">
                     <div className="space-y-2">
                         <Label htmlFor="title">제목</Label>
                         <Input
@@ -65,7 +65,7 @@ export default function NoticeWriteDialog({ onSave }: { onSave: () => void }) {
                             className="bg-white/5 border-white/20 text-white"
                         />
                     </div>
-                    <div className="flex-1 overflow-y-auto p-4 space-y-2">
+                    <div className="space-y-2">
                         <Label htmlFor="content">내용</Label>
                         <Textarea
                             id="content"
@@ -85,7 +85,7 @@ export default function NoticeWriteDialog({ onSave }: { onSave: () => void }) {
                             필독 공지로 설정 (상단 노출)
                         </Label>
                     </div>
-                    <div className="flex justify-end gap-3">
+                    <div className="flex justify-end gap-3 p-6 pt-2 border-t border-white/10 bg-slate-900">
                         <Button type="button" variant="outline" onClick={() => setOpen(false)}>
                             취소
                         </Button>
