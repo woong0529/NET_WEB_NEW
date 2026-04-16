@@ -65,14 +65,14 @@ export default function NoticeWriteDialog({ onSave }: { onSave: () => void }) {
                             className="bg-white/5 border-white/20 text-white"
                         />
                     </div>
-                    <div className="space-y-2">
+                    <div className="flex-1 overflow-y-auto p-4 space-y-2">
                         <Label htmlFor="content">내용</Label>
                         <Textarea
                             id="content"
                             value={content}
                             onChange={(e) => setContent(e.target.value)}
                             placeholder="내용을 입력하세요"
-                            className="min-h-[200px] bg-white/5 border-white/20 text-white"
+                            className="min-h-[200px] bg-white/5 border-white/20 text-white resize-none"
                         />
                     </div>
                     <div className="flex items-center space-x-2">
@@ -85,7 +85,7 @@ export default function NoticeWriteDialog({ onSave }: { onSave: () => void }) {
                             필독 공지로 설정 (상단 노출)
                         </Label>
                     </div>
-                    <div className="flex justify-end gap-3">
+                    <div className="flex justify-end gap-3 sticky bottom-0">
                         <Button type="button" variant="outline" onClick={() => setOpen(false)}>
                             취소
                         </Button>
