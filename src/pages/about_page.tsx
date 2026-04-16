@@ -10,6 +10,7 @@ import woong_img from '../assets/woong_intro_img.png';
 import seon_img from '../assets/seon_intro_img.jpg';
 import yoon_img from '../assets/yoon_intro_img.jpg';
 import dong_img from '../assets/dong_intro_img.jpg';
+import headerback_img from '../assets/about_header_back_img.png';
 
 
 
@@ -120,8 +121,28 @@ export default function AboutPage() {
                     </div>
                 </div>
             </header>
+            <div className="relative w-full h-[35vh] min-h-[250px] flex flex-col justify-center px-8 md:px-24 overflow-hidden border-b border-white/10">
+                
+                {/* 1. 사용자가 원하던 바로 그 배경 이미지! */}
+                <img 
+                    src={headerback_img} /* 맨 위에서 import한 변수 이름 */
+                    alt="About Banner Background" 
+                    className="absolute inset-0 w-full h-full object-cover " 
+                />
+                
+                {/* 2. 글씨가 더 돋보이도록 전체적으로 살짝만 어둡게 눌러주는 막 (필요 없으면 지워도 됩니다) */}
+                <div className="absolute inset-0 bg-black/40"></div>
 
-
+                {/* 텍스트 영역 */}
+                <div className="relative z-10 space-y-4 animate-fade-in-up">
+                    <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+                        N.E.T을 소개합니다
+                    </h1>
+                    <p className="text-lg md:text-xl text-blue-200 font-medium">
+                        경희대학교 소프트웨어융합대학을 대표하는 학술 및 친목 동아리
+                    </p>
+                </div>
+            </div>
 
             <div className="mb-8">
             <h2 className="text-2xl font-bold text-white mb-6 text-center">임원진 소개</h2>
