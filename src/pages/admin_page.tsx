@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { db } from '../firebase';
-import { collection, query, where, getDocs, getDoc, doc, updateDoc} from 'firebase/firestore';
+import { collection, query, where, getDocs, getDoc, doc, updateDoc, deleteDoc} from 'firebase/firestore';
 import { Button } from '../components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
 import NoticeWriteDialog from './notice/write_notice';
+
 
 
 interface UserData {
@@ -85,6 +86,23 @@ export default function AdminPage() {
         }
     };
 
+    //3. 삭제 처리 함수
+    const handleDelete = async (uid: string, name: string) => {
+        if (!window.confirm(`${name} 님의 가입 요청을 거절하고 삭제하시겠습니까?`)) {
+            return;
+        }
+
+        try {
+            await deleteDoc(doc(db, "users", uid));
+            alert("가입 요청이 삭제되었습니다.");
+            // 리스트 갱신 로직 (예: setUsers(users.filter(u => u.id !== uid)))
+        } catch (error) {
+            console.error("삭제 실패:", error);
+            alert("삭제 중 오류가 발생했습니다.");
+        }
+    };
+
+
     if (loading) return <div className="p-8 text-white">로딩 중...</div>;
 
     return (
@@ -147,12 +165,29 @@ export default function AdminPage() {
                                             가입일: {user.createdAt?.toDate().toLocaleDateString()}
                                         </p>
                                     </div>
-                                    <Button
-                                        onClick={() => handleApprove(user.id)}
-                                        className="bg-blue-600 hover:bg-blue-500 text-white px-6 shadow-lg shadow-blue-900/20"
-                                    >
-                                        승인하기
-                                    </Button>
+                                    
+                                    
+                                    <div className="flex items-center gap-2">
+                                    
+                                        <Button
+                                            onClick={() => handleApprove(user.id)}
+                                            className="bg-blue-600 hover:bg-blue-500 text-white px-6 shadow-lg shadow-blue-900/20"
+                                        >
+                                            승인하기
+                                        </Button>
+                                        <Button
+                                            onClick={() => handleDelete(user.id, user.name)}
+                                            variant="destructive" // shadcn/ui 기본 빨간색 스타일
+                                            className="h-8 w-8 p-0" // 아이콘만 들어가는 작은 버튼
+                                            title="거절 및 삭제"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                <path d="M3 6h18"></path>
+                                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                                            </svg>
+                                        </Button>
+                                    </div>
                                 </div>
                             ))}
                         </div>

@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react';
 import { db } from '../../firebase';
 import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '../../components/ui/button';
+import '../../styles/index.css';
+
+
 
 interface Notice {
     id: string;
@@ -14,6 +18,10 @@ interface Notice {
 export default function NoticePage() {
     const [notices, setNotices] = useState<Notice[]>([]);
     const navigate = useNavigate();
+
+    const handleBack = () => {
+        navigate('/main');
+    };
 
     useEffect(() => {
         const fetchNotices = async () => {
@@ -31,6 +39,20 @@ export default function NoticePage() {
 
     return (
         <div className="min-h-screen bg-black text-white p-8 pt-24">
+            <header className="bg-black/30 backdrop-blur-md ">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex justify-between items-center h-10">
+                        <Button
+                            onClick={handleBack}
+                            className="px-4 py-2 bg-white/10 border border-white/20 text-white text-sm rounded-lg hover:bg-white/20 hover:border-white/40 transition-all">
+                            뒤로가기
+                        </Button>
+                    </div>
+                </div>
+            </header>
+
+
+
             <div className="max-w-4xl mx-auto">
                 <h1 className="text-3xl font-bold mb-8">📢 공지사항</h1>
 
