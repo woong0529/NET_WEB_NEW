@@ -85,7 +85,7 @@ export default function NoticeWriteDialog({ onSave }: { onSave: () => void }) {
                             필독 공지로 설정 (상단 노출)
                         </Label>
                     </div>
-                    <div className="flex justify-end gap-3 sticky bottom-0">
+                    <div className="flex justify-end gap-3">
                         <Button type="button" variant="outline" onClick={() => setOpen(false)}>
                             취소
                         </Button>
