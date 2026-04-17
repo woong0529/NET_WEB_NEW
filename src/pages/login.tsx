@@ -24,6 +24,7 @@ export default function LoginPage() {
   const [signupPassword, setSignupPassword] = useState('');
   const [signupPasswordConfirm, setSignupPasswordConfirm] = useState('');
   const [signupName, setSignupName] = useState('');
+  const [loading, setLoading] = useState(false);
 
 // 2. 로그인 상태 감시 (기존 onAuthStateChanged)
     useEffect(() => {
@@ -64,6 +65,8 @@ export default function LoginPage() {
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (loading) return;
     // 회원가입 로직
     if (signupPassword !== signupPasswordConfirm) {
       return alert("비밀번호가 일치하지 않습니다.");
@@ -72,6 +75,9 @@ export default function LoginPage() {
       return alert("비밀번호는 최소 6자 이상이어야 합니다.");
     }
     if (!signupName) return alert("이름을 입력해주세요.");
+
+    setLoading(true);
+
     try {
       const userCredential = await createUserWithEmailAndPassword(
       auth,
@@ -104,6 +110,8 @@ export default function LoginPage() {
       } else {
         alert("회원가입 실패: " + error.message);
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -251,7 +259,9 @@ export default function LoginPage() {
 
             <form onSubmit={handleSignup} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="signup-name">이름</Label>
+                <Label htmlFor="signup-name" className="text-black">
+                  이름
+                </Label>
                 <Input
                   id="signup-name"
                   placeholder="최웅철"
@@ -261,7 +271,9 @@ export default function LoginPage() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="signup-email">이메일</Label>
+                <Label htmlFor="signup-email" className="text-black">
+                  이메일
+                </Label>
                 <Input
                   id="signup-email"
                   type="email"
@@ -273,7 +285,9 @@ export default function LoginPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="signup-password">비밀번호</Label>
+                <Label htmlFor="signup-password" className="text-black">
+                  비밀번호
+                </Label>
                 <Input
                   id="signup-password"
                   type="password"
@@ -285,7 +299,9 @@ export default function LoginPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="signup-password-confirm">비밀번호 확인</Label>
+                <Label htmlFor="signup-password-confirm" className="text-black">
+                  비밀번호 확인
+                </Label>
                 <Input
                   id="signup-password-confirm"
                   type="password"
@@ -297,8 +313,14 @@ export default function LoginPage() {
               </div>
 
               <div className="flex gap-3 pt-2">
-                <Button type="submit" className="flex-1">
-                  가입하기
+                <Button type="submit" disabled={loading} className="flex-1">
+                  {loading ? (
+                    <div className="flex items-center gap-2">
+                      <span className="animate-spin">🌀</span> 처리 중...
+                    </div>
+                  ) : (
+                    "가입하기"
+                  )}
                 </Button>
                 <Button 
                   type="button" 
