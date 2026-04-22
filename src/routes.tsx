@@ -6,6 +6,7 @@ import AdminPage from './pages/admin_page.tsx';
 import AboutPage from './pages/about_page.tsx';
 import NoticePage from './pages/notice/notice_page.tsx';
 import NoticeDetailPage from './pages/notice/notice_detail.tsx';
+import ProtectedRoute from './ProtectedRoute.tsx';
 
 export const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/main',
-    element: <MainPage />,
+    element: (<ProtectedRoute><MainPage /></ProtectedRoute>),
   },
   {
     path: '*',
@@ -26,22 +27,22 @@ export const router = createBrowserRouter([
   },
   {
     path: '/data',
-    element: <DataPage />,
+    element: (<ProtectedRoute><DataPage /></ProtectedRoute>),
   },
   {
     path: "/admin",
-    element: <AdminPage />
+    element: (<ProtectedRoute><AdminPage /></ProtectedRoute>)
   },
   {
     path: '/about',
-    element: <AboutPage />
+    element: (<ProtectedRoute><AboutPage /></ProtectedRoute>)
   },
   {
     path: '/notice',
-    element: <NoticePage />
+    element: (<ProtectedRoute><NoticePage /></ProtectedRoute>)
   },
   {
     path: '/notice/:id',
-    element: <NoticeDetailPage />
+    element: (<ProtectedRoute><NoticeDetailPage /></ProtectedRoute>)
   }
 ]);
