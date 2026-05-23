@@ -68,9 +68,9 @@ export default function DataPage() {
     
           {/* 메인 컨텐츠 */}
           <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl border border-white/20 p-6 mb-8">
-              <h2 className="text-xl font-semibold mb-4 text-white">이곳은 NET 자료실입니다!</h2>
-              <p className="text-gray-200">
+            <div className="bg-white/10 backdrop-blur-md rounded-lg shadow-xl border border-white/20 p-4 sm:p-6 mb-8">
+              <h2 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-4 text-white">이곳은 NET 자료실입니다!</h2>
+              <p className="text-sm sm:text-base text-gray-200">
                 동아리에서 공유하는 학습 자료와 문서를 확인할 수 있습니다. 아래 버튼을 클릭하여 구글 드라이브에 저장된 자료실로 이동하세요.
               </p>
             </div>
@@ -79,36 +79,36 @@ export default function DataPage() {
 
 
             {/* 메뉴 버튼들 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-3 sm:gap-6">
               {/* 신입생 교육 자료실 버튼 */}
               <button
                 onClick={() => window.open('https://drive.google.com/drive/folders/11ERmd1dKu1VHTuS9kM5ccxfcNDDvpVEe?usp=sharing', '_blank')}
-                className="group relative bg-white/10 backdrop-blur-md rounded-xl shadow-xl border border-white/20 p-8 hover:bg-white/20 hover:border-blue-400/50 transition-all duration-300 hover:scale-105"
+                className="group relative bg-white/10 backdrop-blur-md rounded-xl shadow-xl border border-white/20 p-4 sm:p-8 hover:bg-white/20 hover:border-blue-400/50 transition-all duration-300 hover:scale-105"
               >
-                <div className="flex flex-col items-center space-y-4">
-                  <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center group-hover:bg-blue-500/30 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="flex flex-col items-center space-y-2 sm:space-y-4">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-500/20 rounded-full flex items-center justify-center group-hover:bg-blue-500/30 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-white">신입생 교육 자료실</h3>
-                  <p className="text-gray-300 text-center">신입생 교육 자료를 확인할 수 있습니다.</p>
+                  <h3 className="text-sm sm:text-2xl font-bold text-white text-center">신입생 교육 자료실</h3>
+                  <p className="hidden sm:block text-gray-300 text-center">신입생 교육 자료를 확인할 수 있습니다.</p>
                 </div>
               </button>
     
               {/* 족보 저장 버튼 */}
               <button
               onClick={() => window.open('https://drive.google.com/drive/folders/1lFf6ZPggqrsluG8Xu8Es07jl0wgM8FYO?usp=sharing', '_blank')}
-                className="group relative bg-white/10 backdrop-blur-md rounded-xl shadow-xl border border-white/20 p-8 hover:bg-white/20 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105"
+                className="group relative bg-white/10 backdrop-blur-md rounded-xl shadow-xl border border-white/20 p-4 sm:p-8 hover:bg-white/20 hover:border-cyan-400/50 transition-all duration-300 hover:scale-105"
               >
-                <div className="flex flex-col items-center space-y-4">
-                  <div className="w-16 h-16 bg-cyan-500/20 rounded-full flex items-center justify-center group-hover:bg-cyan-500/30 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="flex flex-col items-center space-y-2 sm:space-y-4">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-cyan-500/20 rounded-full flex items-center justify-center group-hover:bg-cyan-500/30 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 sm:w-8 sm:h-8 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-white">족보 드라이브</h3>
-                  <p className="text-gray-300 text-center">가지고 있는 족보를 공유하고 원하는 과목의 족보를 찾아보세요!</p>
+                  <h3 className="text-sm sm:text-2xl font-bold text-white text-center">족보 드라이브</h3>
+                  <p className="hidden sm:block text-gray-300 text-center">가지고 있는 족보를 공유하고 원하는 과목의 족보를 찾아보세요!</p>
                 </div>
               </button>
             </div>

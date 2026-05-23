@@ -160,37 +160,37 @@ export default function MainPage() {
             )}
 
             {/* 2. 네비게이션 & 버튼 영역 (우측) */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-1 sm:space-x-4">
               {/* 자료실 메뉴 */}
               <button
                 onClick={() => navigate('/data')}
-                className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-white/10 transition-all text-white text-sm"
+                className="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-4 py-2 rounded-lg hover:bg-white/10 transition-all text-white text-sm"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <span className="font-medium">자료실</span>
+                <span className="font-medium hidden sm:inline">자료실</span>
               </button>
 
               {/* 사진 드라이브 메뉴 */}
               <button
                 onClick={() => window.open('https://drive.google.com/drive/u/0/folders/17K0uXbohjzxx_3DxA0m9Oq1D-lwHrWmD', '_blank')}
-                className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-white/10 transition-all text-white text-sm"
+                className="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-4 py-2 rounded-lg hover:bg-white/10 transition-all text-white text-sm"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <span className="font-medium">사진 드라이브</span>
+                <span className="font-medium hidden sm:inline">사진 드라이브</span>
               </button>
 
               <button
                 onClick={() => navigate('/about')}
-                className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-white/10 transition-all text-white text-sm"
+                className="flex items-center space-x-1 sm:space-x-2 px-2 sm:px-4 py-2 rounded-lg hover:bg-white/10 transition-all text-white text-sm"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span className="font-medium">넷 소개</span>
+                <span className="font-medium hidden sm:inline">넷 소개</span>
               </button>
 
               {/* 구분선 (선택사항: 메뉴와 로그아웃 버튼 사이) */}
@@ -208,25 +208,25 @@ export default function MainPage() {
         </div>
       </header>
       <div className="h-16"></div> {/* 헤더 높이만큼 패딩 */}
-      <div className="relative w-full min-h-[70vh] flex flex-row items-center justify-center px-4 mb-12 overflow-hidden">
+      <div className="relative w-full min-h-[60vh] md:min-h-[70vh] flex flex-col md:flex-row items-center justify-center px-4 py-12 md:mb-12 overflow-hidden">
         
         {/* 배경 은은한 빛 효과 */}
         <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 via-transparent to-transparent -z-10"></div>
 
         {/* 왼쪽에 크게 N.E.T 추가 */}
-        <div className="flex flex-col items-center justify-center -translate-y-1/4">
-          <h1 className="text-9xl md:text-[14rem] font-extrabold text-white tracking-tighter">N.E.T</h1>
+        <div className="flex flex-col items-center justify-center md:-translate-y-1/4">
+          <h1 className="text-8xl sm:text-9xl md:text-[14rem] font-extrabold text-white tracking-tighter">N.E.T</h1>
         </div> {/* 👈 문제의 원인이었던 오타를 </div> 로 수정했습니다! */}
 
         {/* 기존 세 줄을 오른쪽으로 옮기고, 크기 줄이고, 정렬 */}
-        <div className="flex flex-col items-start ml-16 md:ml-24 -translate-y-1/4">
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight">
+        <div className="flex flex-col items-center md:items-start mt-4 md:mt-0 md:ml-24 md:-translate-y-1/4">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight">
             <span className="text-blue-400">N</span><span className="text-white">etwork</span>
           </h1>
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight">
             <span className="text-blue-400">E</span><span className="text-white">nhanced</span>
           </h1>
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight">
             <span className="text-blue-400">T</span><span className="text-white">echnology</span>
           </h1>
         </div>

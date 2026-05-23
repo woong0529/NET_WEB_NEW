@@ -135,7 +135,7 @@ export default function AboutPage() {
 
                 {/* 텍스트 영역 */}
                 <div className="relative z-10 space-y-4 animate-fade-in-up">
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+                    <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
                         N.E.T을 소개합니다
                     </h1>
                     <p className="text-lg md:text-xl text-blue-200 font-medium">

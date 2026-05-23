@@ -156,7 +156,7 @@ export default function AdminPage() {
                             {pendingUsers.map((user) => (
                                 <div
                                     key={user.id}
-                                    className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-xl flex justify-between items-center transition-all hover:bg-white/15"
+                                    className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 transition-all hover:bg-white/15"
                                 >
                                     <div>
                                         <h2 className="text-xl font-semibold">{user.name}</h2>
